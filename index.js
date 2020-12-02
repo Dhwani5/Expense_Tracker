@@ -21,25 +21,6 @@ con.connect(function(err) {
   
 });
 
-app.post('/addRecord', (req, res) => {   
-    
-      let data = {title: req.body.title, amount: req.body.amount,type: req.body.type};
-
-    let sql = "INSERT INTO `records` SET ?";
-    let query = con.query(sql, data,(err, results) => {
-      if(err){
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({ "message": err,"res":"failed" }));
-      }else{
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({ "message": "user added","res":"success" }));
-      }
-       
-      
-    });
-        
-  });
-
 
   app.post('/getRecords', (req, res) => {   
     let sql = "SELECT * FROM records";
